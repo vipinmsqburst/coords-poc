@@ -12,7 +12,7 @@ const labelData = {
                 x: 120,
                 y: 120
             },
-            label:'Hi vipin'
+            label:'Hi all'
         }
     ]
 }
@@ -112,7 +112,6 @@ window.addEventListener('resize',() => {
     clearTimeout(resizeId);
     resizeId = setTimeout(doResize, 100);
     function doResize(){
-        console.log('resize called')
         const svg = document.getElementsByTagName('svg')[0];
         svg.remove();
         startLabeling();
