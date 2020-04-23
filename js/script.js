@@ -110,10 +110,13 @@ function onSubmitData() {
 let resizeId; 
 window.addEventListener('resize',() => {
     clearTimeout(resizeId);
+    const svg = document.getElementsByTagName('svg')[0];
+    if(svg){
+        svg.remove();
+    }
     resizeId = setTimeout(doResize, 100);
     function doResize(){
-        const svg = document.getElementsByTagName('svg')[0];
-        svg.remove();
+        
         startLabeling();
     }
 });
