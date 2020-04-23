@@ -121,7 +121,7 @@ window.addEventListener('resize',() => {
     }
 });
 
-
+ 
 
 // OldRange = (OldMax - OldMin)  
 // NewRange = (NewMax - NewMin)  
