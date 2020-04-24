@@ -9,28 +9,60 @@
         <title>Image Labeling POC</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <!--0 <div class="header">
+            <button></button>
+        </div> -->
+        <div class="main-content">
+            <div class="card">
+                <div class="image-cotainer">
+                    <img src="./images/test-image.jpg" class="annotation-image">
+                </div>
+            </div>
+            <!-- <div class="card">
+                <div class="image-cotainer">
+                    <img src="./images/test-image.jpg" class="annotation-image">
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-cotainer">
+                    <img src="./images/test-image.jpg" class="annotation-image">
+                </div>
+            </div> -->
+        </div>
         
-        <div class="image-cotainer">
-            <img src="./images/test-image.jpg" id="image">
+        <div id="upload-btn" onclick="showUploadPopup()">
+            Upload New Image
         </div>
+
+        <div class="popup-container">
+            <div class="popup">
+                <div class="form-container">
+                    <label>Add Label</label>
+                    <input type="text" class="form-control" name="input-text" placeholder="Enter label " id="input">
+                </div>
+                <button onclick="onSubmitData()" class="mt-2 btn btn-success float-right">Submit</button>
+            </div>
+        </div>    
+        
+        <div class="popup-container">    
+            <div class="file-upload-popup">
+                <div class="form-container">
+                    <label>Add new image</label>
+                    <input type="file" class="form-control" id="file-input" name="file" placeholder="Select file">
+                </div>
+                <button class="mt-2 btn btn-success float-right" onclick="readURL()">Submit</button>
+            </div>
+        </div>        
+        
         <div class="overlay" onclick="hideOverlay()"></div>
-        <div class="popup">
-            <div>
-                <b>Add Comment</b>
-            </div>
-            <br/>
-            <div>
-                <input type="text" name="imput-text" id="input">
-            </div>
-            <br/>
-            <button onclick="onSubmitData()">Submit</button>
-        </div>
+         
     </body>
     <script src="./js/script.js" async defer></script>
 </html>
