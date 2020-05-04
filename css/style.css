@@ -12,11 +12,11 @@ body {
   justify-content: space-around;
   align-items: center;
 }
-.image-cotainer {
+.image-container {
   width: 100%;
   height: auto;
 }
-.image-cotainer img {
+.image-container img {
   width: 100%;
 }
 .overlay {
@@ -32,7 +32,7 @@ body {
   display: none;
 }
 
-.file-upload-popup{
+.file-upload-popup {
   width: 300px;
   display: none;
   background-color: white;
@@ -40,9 +40,9 @@ body {
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
-  position:absolute;
-  z-index: 901; 
-  top: calc(40% - 50px); 
+  position: absolute;
+  z-index: 901;
+  top: calc(40% - 50px);
   left: calc(40% - 50px);
 }
 
@@ -54,13 +54,11 @@ body {
   border-radius: 5px;
   padding: 10px;
   font-size: 16px;
-  position:absolute;
-  z-index: 900; 
-  top: calc(40% - 50px); 
+  position: absolute;
+  z-index: 900;
+  top: calc(40% - 50px);
   left: calc(40% - 50px);
 }
-
-
 
 .card {
   padding: 30px;
@@ -86,4 +84,31 @@ body {
   -moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.75);
   cursor: pointer;
+}
+
+.toolbar {
+  height: 30px;
+  background-color: #79b5ffc9;
+  /* width: 250px; */
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 5px;
+}
+
+.toolbar .tool {
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.pull-right{
+  float: right;
+}
+
+.pull-left{
+  float: left;
+}
+
+#svg-opt{
+  visibility: hidden;
 }

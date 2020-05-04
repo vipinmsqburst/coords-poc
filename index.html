@@ -9,32 +9,22 @@
         <title>Image Labeling POC</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="" rel="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
+        
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <!--0 <div class="header">
-            <button></button>
-        </div> -->
+        
         <div class="main-content">
             <div class="card">
-                <div class="image-cotainer">
-                    <img src="./images/test-image.jpg" class="annotation-image">
+                <div class="image-container">
+                    <img src="./images/test-image.jpg" class="annotation-image" data='{"image":{"height":2000,"width":3000},"labels":[]}'>
                 </div>
             </div>
-            <!-- <div class="card">
-                <div class="image-cotainer">
-                    <img src="./images/test-image.jpg" class="annotation-image">
-                </div>
-            </div>
-            <div class="card">
-                <div class="image-cotainer">
-                    <img src="./images/test-image.jpg" class="annotation-image">
-                </div>
-            </div> -->
         </div>
         
         <div id="upload-btn" onclick="showUploadPopup()">
@@ -59,10 +49,11 @@
                 </div>
                 <button class="mt-2 btn btn-success float-right" onclick="readURL()">Submit</button>
             </div>
-        </div>        
+        </div>
         
         <div class="overlay" onclick="hideOverlay()"></div>
-         
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" async defer></script>
+        <script src="./js/script.js" async defer></script>
     </body>
-    <script src="./js/script.js" async defer></script>
 </html>
