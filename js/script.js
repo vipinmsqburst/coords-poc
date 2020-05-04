@@ -71,7 +71,8 @@ function addToolBox(image, imageId) {
     rightToolBox.classList.add('toolbar', 'pull-right')
     rightToolBox.innerHTML = `
                             <i class="tool fas fa-grip-lines-vertical" onclick="handleLineCLick(${imageId})"></i>
-                            <i class="tool fas fa-font"></i>
+                            <i class="tool fas fa-font" onclick="handleTextClick(${imageId})"></i>
+                            <i class="tool far fa-square" onclick="handleRectangleClick(${imageId})"></i>
                             <i class="tool fas fa-circle" onclick="handleCircleClick(${imageId})"></i>
                           `
     const leftToolBox = document.createElement('span');
@@ -232,6 +233,35 @@ function handleLineCLick(imageId){
     )
 }
 
+function handleRectangleClick(imageId) {
+    addRectangle(
+        imageSize.width / 2,
+        imageSize.height / 2,
+        imageId
+    )
+}
+let textAddImage = null;
+function handleTextClick(imageId){
+    textAddImage = imageId;
+    showCommentBox();
+}
+
+function addRectangle(xPosition,yPosition,imageId){
+    const rect = document.createElementNS(svgns,'rect');
+    const width = xPosition*2/5;
+    const height =  yPosition*2/5;
+    rect.setAttribute('x', xPosition-width/2 + svgPadding.left);
+    rect.setAttribute('y', yPosition-height/2 + svgPadding.top);
+    rect.setAttribute('width', width);
+    rect.setAttribute('height', height);
+    rect.setAttribute('style', "fill:rgb(0,200,200);stroke-width:3;stroke:rgb(0,200,200);opacity:0.5");
+    const svg = document.getElementById(`sv${imageId}`);
+    if (editingMode) {
+        rect.setAttribute('class', 'draggable');
+    }
+    svg.appendChild(rect);
+}
+
 function addLine(xPosition,yPosition,imageId){
     const line = document.createElementNS(svgns,'line');
     const length = xPosition*2/5;
@@ -301,6 +331,15 @@ function onSelectMove() {
     }
 }
 
+function onSubmitData() {
+    if (document.getElementById('input').value.trim()) {
+        const text = document.getElementById('input').value.trim();
+        addText(text);
+    }
+    hideOverlay();
+}
+
+
 function moveCircle(circle, x, y) {
     if (circle) {
         console.log(x, y)
@@ -314,4 +353,44 @@ function onClickDelete() {
         selectedElement.element.parentElement.removeChild(selectedElement.element);
         selectedElement = null;
     }
+}
+
+function showCommentBox(){
+    showOverlay();
+    const uploadPopup = document.getElementsByClassName('popup')[0];
+    uploadPopup.style.display = 'block';
+}
+
+function showUploadPopup(){
+    showOverlay();
+    const uploadPopup = document.getElementsByClassName('file-upload-popup')[0];
+    uploadPopup.style.display = 'block';
+}
+
+function hideUploadPopup(){
+    const uploadPopup = document.getElementsByClassName('file-upload-popup')[0];
+    uploadPopup.style.display = 'none';
+}
+
+
+function showOverlay() {
+    document.getElementById('input').autofocus = true;
+    document.getElementsByClassName('overlay')[0].style.display = 'block';
+}
+
+//Auxillary functions
+function hideOverlay() {
+    document.getElementsByClassName('overlay')[0].style.display = 'none';
+    hideCommentBox();
+    hideUploadPopup();
+}
+
+function hideCommentBox() {
+    document.getElementsByClassName('popup')[0].style.display = 'none';
+    document.getElementById('input').value = '';
+}
+
+function hideUploadPopup(){
+    const uploadPopup = document.getElementsByClassName('file-upload-popup')[0];
+    uploadPopup.style.display = 'none';
 }
