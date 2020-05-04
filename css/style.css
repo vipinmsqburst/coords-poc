@@ -112,3 +112,7 @@ body {
 #svg-opt{
   visibility: hidden;
 }
+
+.draggable{
+  cursor: pointer;
+}

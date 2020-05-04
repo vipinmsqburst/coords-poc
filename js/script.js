@@ -240,9 +240,9 @@ function handleRectangleClick(imageId) {
         imageId
     )
 }
-let textAddImage = null;
+let selectedImageId = null;
 function handleTextClick(imageId){
-    textAddImage = imageId;
+    selectedImageId = imageId;
     showCommentBox();
 }
 
@@ -276,6 +276,20 @@ function addLine(xPosition,yPosition,imageId){
         line.setAttribute('class', 'draggable');
     }
     svg.appendChild(line);
+}
+
+function addText(xPosition, yPosition, text,imageId){
+    const t = document.createElementNS(svgns,'text');
+    t.setAttribute('value',text);
+    t.setAttribute('x',xPosition + svgPadding.left);
+    t.setAttribute('fill','black');
+    t.setAttribute('y',yPosition + svgPadding.top)
+    t.textContent = text;
+    const svg = document.getElementById(`sv${imageId}`);
+    if (editingMode) {
+        t.setAttribute('class', 'draggable');
+    }
+    svg.appendChild(t);
 }
 
 /**
@@ -332,9 +346,12 @@ function onSelectMove() {
 }
 
 function onSubmitData() {
-    if (document.getElementById('input').value.trim()) {
+    if (document.getElementById('input').value.trim() && selectedImageId) {
         const text = document.getElementById('input').value.trim();
-        addText(text);
+        const image = document.getElementById(selectedImageId);
+        const width = image.clientWidth;
+        const height =  image.clientHeight;
+        addText(width/2,height/2,text,selectedImageId);
     }
     hideOverlay();
 }
